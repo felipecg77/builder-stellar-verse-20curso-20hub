@@ -116,66 +116,67 @@ const categories = [
 
 function CourseCard({ course }: { course: Course }) {
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 group h-full flex flex-col">
       <div className="relative">
         <img
           src={course.thumbnail}
           alt={course.title}
-          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute top-3 left-3">
+        <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
           {course.bestseller && (
-            <Badge className="bg-yellow-500 text-yellow-900 hover:bg-yellow-500">
+            <Badge className="bg-yellow-500 text-yellow-900 hover:bg-yellow-500 text-xs">
               Bestseller
             </Badge>
           )}
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
-          <PlayCircle className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={48} />
+          <PlayCircle className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={40} />
         </div>
       </div>
-      
-      <CardHeader className="pb-2">
-        <h3 className="font-semibold text-lg line-clamp-2 group-hover:text-primary transition-colors">
+
+      <CardHeader className="pb-2 flex-1">
+        <h3 className="font-semibold text-base sm:text-lg line-clamp-2 group-hover:text-primary transition-colors leading-tight">
           {course.title}
         </h3>
-        <p className="text-sm text-muted-foreground">{course.instructor}</p>
+        <p className="text-xs sm:text-sm text-muted-foreground">{course.instructor}</p>
       </CardHeader>
-      
+
       <CardContent className="pb-2">
         <div className="flex items-center gap-2 mb-2">
           <div className="flex items-center gap-1">
-            <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-            <span className="text-sm font-medium">{course.rating}</span>
+            <Star className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
+            <span className="text-xs sm:text-sm font-medium">{course.rating}</span>
           </div>
-          <span className="text-sm text-muted-foreground">
-            ({course.studentCount.toLocaleString()} estudiantes)
+          <span className="text-xs sm:text-sm text-muted-foreground truncate">
+            ({course.studentCount.toLocaleString()})
           </span>
         </div>
-        
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+
+        <div className="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
           <div className="flex items-center gap-1">
-            <Clock className="h-4 w-4" />
-            {course.duration}
+            <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="truncate">{course.duration}</span>
           </div>
           <Badge variant="secondary" className="text-xs">
             {course.level}
           </Badge>
         </div>
       </CardContent>
-      
+
       <CardFooter className="pt-2">
-        <div className="flex items-center justify-between w-full">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold">${course.price}</span>
+        <div className="flex items-center justify-between w-full gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-lg sm:text-2xl font-bold">${course.price}</span>
             {course.originalPrice && (
-              <span className="text-sm text-muted-foreground line-through">
+              <span className="text-xs sm:text-sm text-muted-foreground line-through">
                 ${course.originalPrice}
               </span>
             )}
           </div>
-          <Button size="sm" className="ml-auto">
-            Inscribirse
+          <Button size="sm" className="text-xs sm:text-sm px-3 sm:px-4">
+            <span className="sm:hidden">Inscribir</span>
+            <span className="hidden sm:inline">Inscribirse</span>
           </Button>
         </div>
       </CardFooter>
