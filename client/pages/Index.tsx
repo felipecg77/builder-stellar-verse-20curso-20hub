@@ -349,12 +349,16 @@ export default function Index() {
             con nuestros cursos de alta calidad.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
-            <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8">
-              Comenzar Ahora
-            </Button>
-            <Button size="lg" variant="outline" className="text-base sm:text-lg px-6 sm:px-8">
-              Explorar Cursos
-            </Button>
+            <Link to="/register">
+              <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto">
+                Comenzar Ahora
+              </Button>
+            </Link>
+            <Link to="/categories">
+              <Button size="lg" variant="outline" className="text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto">
+                Explorar Cursos
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
