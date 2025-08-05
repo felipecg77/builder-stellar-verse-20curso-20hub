@@ -293,23 +293,23 @@ export default function Index() {
       </section>
 
       {/* Categories */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-12 sm:py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Explora por Categorías</h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Explora por Categorías</h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
             {categories.map((category, index) => {
               const Icon = category.icon;
               return (
                 <Link
                   key={index}
                   to={`/category/${category.name.toLowerCase()}`}
-                  className="flex flex-col items-center p-6 rounded-lg bg-white hover:shadow-md transition-shadow group"
+                  className="flex flex-col items-center p-4 sm:p-6 rounded-lg bg-white hover:shadow-md transition-shadow group"
                 >
-                  <div className={`p-4 rounded-full ${category.color} group-hover:scale-110 transition-transform`}>
-                    <Icon className="h-8 w-8" />
+                  <div className={`p-3 sm:p-4 rounded-full ${category.color} group-hover:scale-110 transition-transform`}>
+                    <Icon className="h-6 w-6 sm:h-8 sm:w-8" />
                   </div>
-                  <h3 className="mt-4 font-medium text-center">{category.name}</h3>
+                  <h3 className="mt-3 sm:mt-4 font-medium text-center text-sm sm:text-base">{category.name}</h3>
                 </Link>
               );
             })}
