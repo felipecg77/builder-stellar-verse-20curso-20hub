@@ -271,10 +271,12 @@ export default function Index() {
                 className="pl-10 sm:pl-12 h-12 sm:h-14 text-base sm:text-lg bg-white text-foreground w-full"
               />
             </div>
-            <Button size="lg" variant="secondary" className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold w-full sm:w-auto">
-              <span className="sm:hidden">Buscar</span>
-              <span className="hidden sm:inline">Buscar Cursos</span>
-            </Button>
+            <Link to="/categories">
+              <Button size="lg" variant="secondary" className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold w-full sm:w-auto">
+                <span className="sm:hidden">Buscar</span>
+                <span className="hidden sm:inline">Buscar Cursos</span>
+              </Button>
+            </Link>
           </div>
 
           <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto">
