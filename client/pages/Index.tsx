@@ -223,13 +223,17 @@ export default function Index() {
                 />
               </div>
 
-              <Button variant="outline" size="sm" className="hidden sm:inline-flex">
-                Iniciar Sesión
-              </Button>
-              <Button size="sm">
-                <span className="hidden sm:inline">Registrarse</span>
-                <span className="sm:hidden">Registro</span>
-              </Button>
+              <Link to="/login">
+                <Button variant="outline" size="sm" className="hidden sm:inline-flex">
+                  Iniciar Sesión
+                </Button>
+              </Link>
+              <Link to="/register">
+                <Button size="sm">
+                  <span className="hidden sm:inline">Registrarse</span>
+                  <span className="sm:hidden">Registro</span>
+                </Button>
+              </Link>
             </div>
           </div>
 
