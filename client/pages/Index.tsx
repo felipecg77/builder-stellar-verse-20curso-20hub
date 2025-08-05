@@ -248,44 +248,45 @@ export default function Index() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary via-primary/90 to-primary/80 text-white py-20">
+      <section className="bg-gradient-to-r from-primary via-primary/90 to-primary/80 text-white py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
             Aprende sin límites
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
-            Descubre miles de cursos impartidos por expertos de la industria. 
+          <p className="text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 text-white/90 max-w-3xl mx-auto leading-relaxed px-4">
+            Descubre miles de cursos impartidos por expertos de la industria.
             Desarrolla nuevas habilidades y avanza en tu carrera profesional.
           </p>
-          
-          <div className="flex flex-col md:flex-row items-center gap-4 max-w-2xl mx-auto">
+
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 max-w-2xl mx-auto px-4">
             <div className="relative flex-1 w-full">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+              <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4 sm:h-5 sm:w-5" />
               <Input
                 placeholder="¿Qué quieres aprender hoy?"
-                className="pl-12 h-14 text-lg bg-white text-foreground"
+                className="pl-10 sm:pl-12 h-12 sm:h-14 text-base sm:text-lg bg-white text-foreground w-full"
               />
             </div>
-            <Button size="lg" variant="secondary" className="h-14 px-8 text-lg font-semibold">
-              Buscar Cursos
+            <Button size="lg" variant="secondary" className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold w-full sm:w-auto">
+              <span className="sm:hidden">Buscar</span>
+              <span className="hidden sm:inline">Buscar Cursos</span>
             </Button>
           </div>
-          
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <BookOpen className="h-12 w-12 mx-auto mb-4 text-white/80" />
-              <h3 className="text-xl font-semibold mb-2">+10,000 Cursos</h3>
-              <p className="text-white/80">En más de 100 categorías diferentes</p>
+              <BookOpen className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-white/80" />
+              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">+10,000 Cursos</h3>
+              <p className="text-sm sm:text-base text-white/80">En más de 100 categorías diferentes</p>
             </div>
             <div className="text-center">
-              <Users className="h-12 w-12 mx-auto mb-4 text-white/80" />
-              <h3 className="text-xl font-semibold mb-2">+500,000 Estudiantes</h3>
-              <p className="text-white/80">Aprenden con nosotros cada día</p>
+              <Users className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-white/80" />
+              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">+500,000 Estudiantes</h3>
+              <p className="text-sm sm:text-base text-white/80">Aprenden con nosotros cada día</p>
             </div>
             <div className="text-center">
-              <Star className="h-12 w-12 mx-auto mb-4 text-white/80" />
-              <h3 className="text-xl font-semibold mb-2">Certificaciones</h3>
-              <p className="text-white/80">Reconocidas por la industria</p>
+              <Star className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-white/80" />
+              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Certificaciones</h3>
+              <p className="text-sm sm:text-base text-white/80">Reconocidas por la industria</p>
             </div>
           </div>
         </div>
