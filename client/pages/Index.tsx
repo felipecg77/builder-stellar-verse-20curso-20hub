@@ -190,15 +190,15 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="bg-white border-b sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-4 lg:gap-8">
               <Link to="/" className="flex items-center gap-2">
-                <BookOpen className="h-8 w-8 text-primary" />
-                <span className="text-2xl font-bold text-primary">CursoHub</span>
+                <BookOpen className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                <span className="text-lg sm:text-2xl font-bold text-primary">CursoHub</span>
               </Link>
-              
-              <nav className="hidden md:flex items-center gap-6">
+
+              <nav className="hidden lg:flex items-center gap-6">
                 <Link to="/categories" className="text-muted-foreground hover:text-foreground transition-colors">
                   Categorías
                 </Link>
@@ -210,20 +210,38 @@ export default function Index() {
                 </Link>
               </nav>
             </div>
-            
-            <div className="flex items-center gap-4">
-              <div className="relative hidden md:block">
+
+            <div className="flex items-center gap-2 sm:gap-4">
+              <div className="relative hidden lg:block">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
                   placeholder="Buscar cursos..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 w-80"
+                  className="pl-10 w-64 xl:w-80"
                 />
               </div>
-              
-              <Button variant="outline">Iniciar Sesión</Button>
-              <Button>Registrarse</Button>
+
+              <Button variant="outline" size="sm" className="hidden sm:inline-flex">
+                Iniciar Sesión
+              </Button>
+              <Button size="sm">
+                <span className="hidden sm:inline">Registrarse</span>
+                <span className="sm:hidden">Registro</span>
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile Search */}
+          <div className="mt-3 lg:hidden">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input
+                placeholder="Buscar cursos..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 w-full"
+              />
             </div>
           </div>
         </div>
