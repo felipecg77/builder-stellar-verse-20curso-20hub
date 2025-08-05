@@ -337,18 +337,18 @@ export default function Index() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-muted">
+      <section className="py-12 sm:py-16 lg:py-20 bg-muted">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">¿Listo para comenzar?</h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Únete a miles de estudiantes que ya están transformando sus carreras 
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">¿Listo para comenzar?</h2>
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
+            Únete a miles de estudiantes que ya están transformando sus carreras
             con nuestros cursos de alta calidad.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
+            <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8">
               Comenzar Ahora
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8">
+            <Button size="lg" variant="outline" className="text-base sm:text-lg px-6 sm:px-8">
               Explorar Cursos
             </Button>
           </div>
@@ -356,43 +356,43 @@ export default function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-12">
+      <footer className="bg-foreground text-background py-8 sm:py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <BookOpen className="h-8 w-8" />
-                <span className="text-2xl font-bold">CursoHub</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div className="sm:col-span-2 lg:col-span-1">
+              <div className="flex items-center gap-2 mb-3 sm:mb-4">
+                <BookOpen className="h-6 w-6 sm:h-8 sm:w-8" />
+                <span className="text-xl sm:text-2xl font-bold">CursoHub</span>
               </div>
-              <p className="text-background/80">
-                La plataforma líder en educación online con los mejores cursos 
+              <p className="text-background/80 text-sm sm:text-base">
+                La plataforma líder en educación online con los mejores cursos
                 impartidos por expertos de la industria.
               </p>
             </div>
-            
+
             <div>
-              <h3 className="font-semibold mb-4">Cursos</h3>
-              <ul className="space-y-2 text-background/80">
+              <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Cursos</h3>
+              <ul className="space-y-1 sm:space-y-2 text-background/80 text-sm sm:text-base">
                 <li><Link to="/category/desarrollo" className="hover:text-background transition-colors">Desarrollo Web</Link></li>
                 <li><Link to="/category/diseno" className="hover:text-background transition-colors">Diseño</Link></li>
                 <li><Link to="/category/marketing" className="hover:text-background transition-colors">Marketing</Link></li>
                 <li><Link to="/category/negocios" className="hover:text-background transition-colors">Negocios</Link></li>
               </ul>
             </div>
-            
+
             <div>
-              <h3 className="font-semibold mb-4">Empresa</h3>
-              <ul className="space-y-2 text-background/80">
+              <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Empresa</h3>
+              <ul className="space-y-1 sm:space-y-2 text-background/80 text-sm sm:text-base">
                 <li><Link to="/about" className="hover:text-background transition-colors">Acerca de</Link></li>
                 <li><Link to="/careers" className="hover:text-background transition-colors">Carreras</Link></li>
                 <li><Link to="/press" className="hover:text-background transition-colors">Prensa</Link></li>
                 <li><Link to="/blog" className="hover:text-background transition-colors">Blog</Link></li>
               </ul>
             </div>
-            
+
             <div>
-              <h3 className="font-semibold mb-4">Soporte</h3>
-              <ul className="space-y-2 text-background/80">
+              <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Soporte</h3>
+              <ul className="space-y-1 sm:space-y-2 text-background/80 text-sm sm:text-base">
                 <li><Link to="/help" className="hover:text-background transition-colors">Centro de Ayuda</Link></li>
                 <li><Link to="/contact" className="hover:text-background transition-colors">Contacto</Link></li>
                 <li><Link to="/privacy" className="hover:text-background transition-colors">Privacidad</Link></li>
@@ -400,8 +400,8 @@ export default function Index() {
               </ul>
             </div>
           </div>
-          
-          <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/60">
+
+          <div className="border-t border-background/20 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-background/60 text-xs sm:text-sm">
             <p>&copy; 2024 CursoHub. Todos los derechos reservados.</p>
           </div>
         </div>
