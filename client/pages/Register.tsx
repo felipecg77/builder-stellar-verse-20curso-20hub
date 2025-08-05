@@ -7,25 +7,40 @@ import { BookOpen, Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 
-const registerSchema = z.object({
-  firstName: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
-  lastName: z.string().min(2, "El apellido debe tener al menos 2 caracteres"),
-  email: z.string().email("Ingresa un email válido"),
-  password: z.string()
-    .min(8, "La contraseña debe tener al menos 8 caracteres")
-    .regex(/(?=.*[a-z])/, "Debe contener al menos una letra minúscula")
-    .regex(/(?=.*[A-Z])/, "Debe contener al menos una letra mayúscula")
-    .regex(/(?=.*\d)/, "Debe contener al menos un número"),
-  confirmPassword: z.string(),
-  acceptTerms: z.boolean().refine(val => val === true, "Debes aceptar los términos y condiciones")
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Las contraseñas no coinciden",
-  path: ["confirmPassword"],
-});
+const registerSchema = z
+  .object({
+    firstName: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
+    lastName: z.string().min(2, "El apellido debe tener al menos 2 caracteres"),
+    email: z.string().email("Ingresa un email válido"),
+    password: z
+      .string()
+      .min(8, "La contraseña debe tener al menos 8 caracteres")
+      .regex(/(?=.*[a-z])/, "Debe contener al menos una letra minúscula")
+      .regex(/(?=.*[A-Z])/, "Debe contener al menos una letra mayúscula")
+      .regex(/(?=.*\d)/, "Debe contener al menos un número"),
+    confirmPassword: z.string(),
+    acceptTerms: z
+      .boolean()
+      .refine(
+        (val) => val === true,
+        "Debes aceptar los términos y condiciones",
+      ),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Las contraseñas no coinciden",
+    path: ["confirmPassword"],
+  });
 
 type RegisterData = z.infer<typeof registerSchema>;
 
@@ -40,28 +55,27 @@ export default function Register() {
     handleSubmit,
     watch,
     setValue,
-    formState: { errors }
+    formState: { errors },
   } = useForm<RegisterData>({
-    resolver: zodResolver(registerSchema)
+    resolver: zodResolver(registerSchema),
   });
 
   const password = watch("password");
 
   const onSubmit = async (data: RegisterData) => {
     setIsLoading(true);
-    
+
     try {
       // Simular llamada a API
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
       toast({
         title: "¡Cuenta creada exitosamente!",
         description: `Bienvenido ${data.firstName}, revisa tu email para verificar tu cuenta.`,
       });
-      
+
       // Aquí redirigiríamos a la página de verificación o login
       console.log("Register data:", data);
-      
     } catch (error) {
       toast({
         variant: "destructive",
@@ -75,7 +89,7 @@ export default function Register() {
 
   const getPasswordStrength = () => {
     if (!password) return { strength: 0, color: "bg-gray-200", text: "" };
-    
+
     let strength = 0;
     if (password.length >= 8) strength++;
     if (/(?=.*[a-z])/.test(password)) strength++;
@@ -83,13 +97,19 @@ export default function Register() {
     if (/(?=.*\d)/.test(password)) strength++;
     if (/(?=.*[!@#$%^&*])/.test(password)) strength++;
 
-    const colors = ["bg-red-500", "bg-orange-500", "bg-yellow-500", "bg-blue-500", "bg-green-500"];
+    const colors = [
+      "bg-red-500",
+      "bg-orange-500",
+      "bg-yellow-500",
+      "bg-blue-500",
+      "bg-green-500",
+    ];
     const texts = ["Muy débil", "Débil", "Regular", "Fuerte", "Muy fuerte"];
-    
+
     return {
       strength,
       color: colors[strength - 1] || "bg-gray-200",
-      text: texts[strength - 1] || ""
+      text: texts[strength - 1] || "",
     };
   };
 
@@ -117,7 +137,7 @@ export default function Register() {
                 Únete a CursoHub y comienza tu viaje de aprendizaje
               </CardDescription>
             </CardHeader>
-            
+
             <CardContent>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
@@ -133,7 +153,9 @@ export default function Register() {
                       />
                     </div>
                     {errors.firstName && (
-                      <p className="text-xs text-destructive">{errors.firstName.message}</p>
+                      <p className="text-xs text-destructive">
+                        {errors.firstName.message}
+                      </p>
                     )}
                   </div>
 
@@ -145,7 +167,9 @@ export default function Register() {
                       {...register("lastName")}
                     />
                     {errors.lastName && (
-                      <p className="text-xs text-destructive">{errors.lastName.message}</p>
+                      <p className="text-xs text-destructive">
+                        {errors.lastName.message}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -163,7 +187,9 @@ export default function Register() {
                     />
                   </div>
                   {errors.email && (
-                    <p className="text-sm text-destructive">{errors.email.message}</p>
+                    <p className="text-sm text-destructive">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
 
@@ -183,27 +209,37 @@ export default function Register() {
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
                     >
-                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
                     </button>
                   </div>
-                  
+
                   {password && (
                     <div className="space-y-2">
                       <div className="flex justify-between text-xs">
                         <span>Seguridad de contraseña:</span>
-                        <span className="font-medium">{passwordStrength.text}</span>
+                        <span className="font-medium">
+                          {passwordStrength.text}
+                        </span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
+                        <div
                           className={`h-2 rounded-full transition-all ${passwordStrength.color}`}
-                          style={{ width: `${(passwordStrength.strength / 5) * 100}%` }}
+                          style={{
+                            width: `${(passwordStrength.strength / 5) * 100}%`,
+                          }}
                         />
                       </div>
                     </div>
                   )}
-                  
+
                   {errors.password && (
-                    <p className="text-sm text-destructive">{errors.password.message}</p>
+                    <p className="text-sm text-destructive">
+                      {errors.password.message}
+                    </p>
                   )}
                 </div>
 
@@ -220,21 +256,31 @@ export default function Register() {
                     />
                     <button
                       type="button"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
                     >
-                      {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      {showConfirmPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
                     </button>
                   </div>
                   {errors.confirmPassword && (
-                    <p className="text-sm text-destructive">{errors.confirmPassword.message}</p>
+                    <p className="text-sm text-destructive">
+                      {errors.confirmPassword.message}
+                    </p>
                   )}
                 </div>
 
                 <div className="flex items-start space-x-2">
-                  <Checkbox 
+                  <Checkbox
                     id="acceptTerms"
-                    onCheckedChange={(checked) => setValue("acceptTerms", !!checked)}
+                    onCheckedChange={(checked) =>
+                      setValue("acceptTerms", !!checked)
+                    }
                   />
                   <div className="grid gap-1.5 leading-none">
                     <Label
@@ -242,25 +288,29 @@ export default function Register() {
                       className="text-sm font-normal leading-snug cursor-pointer"
                     >
                       Acepto los{" "}
-                      <Link to="/terms" className="text-primary hover:underline">
+                      <Link
+                        to="/terms"
+                        className="text-primary hover:underline"
+                      >
                         términos y condiciones
                       </Link>{" "}
                       y la{" "}
-                      <Link to="/privacy" className="text-primary hover:underline">
+                      <Link
+                        to="/privacy"
+                        className="text-primary hover:underline"
+                      >
                         política de privacidad
                       </Link>
                     </Label>
                   </div>
                 </div>
                 {errors.acceptTerms && (
-                  <p className="text-sm text-destructive">{errors.acceptTerms.message}</p>
+                  <p className="text-sm text-destructive">
+                    {errors.acceptTerms.message}
+                  </p>
                 )}
 
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={isLoading}
-                >
+                <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? "Creando cuenta..." : "Crear Cuenta"}
                 </Button>
               </form>
@@ -301,7 +351,11 @@ export default function Register() {
                   Google
                 </Button>
                 <Button variant="outline" disabled>
-                  <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="mr-2 h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                   Facebook
@@ -310,7 +364,10 @@ export default function Register() {
 
               <p className="text-center text-sm text-muted-foreground">
                 ¿Ya tienes cuenta?{" "}
-                <Link to="/login" className="text-primary hover:underline font-medium">
+                <Link
+                  to="/login"
+                  className="text-primary hover:underline font-medium"
+                >
                   Inicia sesión aquí
                 </Link>
               </p>

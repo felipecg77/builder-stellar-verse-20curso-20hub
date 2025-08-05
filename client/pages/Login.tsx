@@ -7,12 +7,19 @@ import { BookOpen, Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 
 const loginSchema = z.object({
   email: z.string().email("Ingresa un email válido"),
-  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres")
+  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
 });
 
 type LoginData = z.infer<typeof loginSchema>;
@@ -25,26 +32,25 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<LoginData>({
-    resolver: zodResolver(loginSchema)
+    resolver: zodResolver(loginSchema),
   });
 
   const onSubmit = async (data: LoginData) => {
     setIsLoading(true);
-    
+
     try {
       // Simular llamada a API
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       toast({
         title: "¡Bienvenido!",
         description: `Has iniciado sesión como ${data.email}`,
       });
-      
+
       // Aquí redirigiríamos al dashboard o página principal
       console.log("Login data:", data);
-      
     } catch (error) {
       toast({
         variant: "destructive",
@@ -73,12 +79,14 @@ export default function Login() {
         <div className="w-full max-w-md">
           <Card className="shadow-lg">
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl font-bold">Iniciar Sesión</CardTitle>
+              <CardTitle className="text-2xl font-bold">
+                Iniciar Sesión
+              </CardTitle>
               <CardDescription>
                 Ingresa a tu cuenta para continuar aprendiendo
               </CardDescription>
             </CardHeader>
-            
+
             <CardContent>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="space-y-2">
@@ -94,7 +102,9 @@ export default function Login() {
                     />
                   </div>
                   {errors.email && (
-                    <p className="text-sm text-destructive">{errors.email.message}</p>
+                    <p className="text-sm text-destructive">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
 
@@ -114,11 +124,17 @@ export default function Login() {
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
                     >
-                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
                     </button>
                   </div>
                   {errors.password && (
-                    <p className="text-sm text-destructive">{errors.password.message}</p>
+                    <p className="text-sm text-destructive">
+                      {errors.password.message}
+                    </p>
                   )}
                 </div>
 
@@ -131,11 +147,7 @@ export default function Login() {
                   </Link>
                 </div>
 
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={isLoading}
-                >
+                <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? "Iniciando sesión..." : "Iniciar Sesión"}
                 </Button>
               </form>
@@ -176,7 +188,11 @@ export default function Login() {
                   Google
                 </Button>
                 <Button variant="outline" disabled>
-                  <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="mr-2 h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                   Facebook
@@ -185,7 +201,10 @@ export default function Login() {
 
               <p className="text-center text-sm text-muted-foreground">
                 ¿No tienes cuenta?{" "}
-                <Link to="/register" className="text-primary hover:underline font-medium">
+                <Link
+                  to="/register"
+                  className="text-primary hover:underline font-medium"
+                >
                   Regístrate aquí
                 </Link>
               </p>

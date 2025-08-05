@@ -1,9 +1,26 @@
 import { useState } from "react";
-import { Search, Star, Users, Clock, PlayCircle, BookOpen, Code, Palette, Camera, Brain, TrendingUp } from "lucide-react";
+import {
+  Search,
+  Star,
+  Users,
+  Clock,
+  PlayCircle,
+  BookOpen,
+  Code,
+  Palette,
+  Camera,
+  Brain,
+  TrendingUp,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
 interface Course {
@@ -34,7 +51,7 @@ const featuredCourses: Course[] = [
     thumbnail: "/api/placeholder/400/225",
     category: "Desarrollo Web",
     level: "Intermedio",
-    bestseller: true
+    bestseller: true,
   },
   {
     id: "2",
@@ -47,7 +64,7 @@ const featuredCourses: Course[] = [
     duration: "28 horas",
     thumbnail: "/api/placeholder/400/225",
     category: "Diseño",
-    level: "Principiante"
+    level: "Principiante",
   },
   {
     id: "3",
@@ -61,7 +78,7 @@ const featuredCourses: Course[] = [
     thumbnail: "/api/placeholder/400/225",
     category: "Data Science",
     level: "Intermedio",
-    bestseller: true
+    bestseller: true,
   },
   {
     id: "4",
@@ -74,7 +91,7 @@ const featuredCourses: Course[] = [
     duration: "18 horas",
     thumbnail: "/api/placeholder/400/225",
     category: "Fotografía",
-    level: "Principiante"
+    level: "Principiante",
   },
   {
     id: "5",
@@ -87,7 +104,7 @@ const featuredCourses: Course[] = [
     duration: "25 horas",
     thumbnail: "/api/placeholder/400/225",
     category: "Marketing",
-    level: "Intermedio"
+    level: "Intermedio",
   },
   {
     id: "6",
@@ -101,8 +118,8 @@ const featuredCourses: Course[] = [
     thumbnail: "/api/placeholder/400/225",
     category: "IA",
     level: "Avanzado",
-    bestseller: true
-  }
+    bestseller: true,
+  },
 ];
 
 const categories = [
@@ -110,8 +127,12 @@ const categories = [
   { name: "Diseño", icon: Palette, color: "bg-pink-100 text-pink-700" },
   { name: "Data Science", icon: Brain, color: "bg-purple-100 text-purple-700" },
   { name: "Fotografía", icon: Camera, color: "bg-green-100 text-green-700" },
-  { name: "Marketing", icon: TrendingUp, color: "bg-orange-100 text-orange-700" },
-  { name: "IA", icon: Brain, color: "bg-red-100 text-red-700" }
+  {
+    name: "Marketing",
+    icon: TrendingUp,
+    color: "bg-orange-100 text-orange-700",
+  },
+  { name: "IA", icon: Brain, color: "bg-red-100 text-red-700" },
 ];
 
 function CourseCard({ course }: { course: Course }) {
@@ -131,7 +152,10 @@ function CourseCard({ course }: { course: Course }) {
           )}
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
-          <PlayCircle className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={40} />
+          <PlayCircle
+            className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            size={40}
+          />
         </div>
       </div>
 
@@ -139,14 +163,18 @@ function CourseCard({ course }: { course: Course }) {
         <h3 className="font-semibold text-base sm:text-lg line-clamp-2 group-hover:text-primary transition-colors leading-tight">
           {course.title}
         </h3>
-        <p className="text-xs sm:text-sm text-muted-foreground">{course.instructor}</p>
+        <p className="text-xs sm:text-sm text-muted-foreground">
+          {course.instructor}
+        </p>
       </CardHeader>
 
       <CardContent className="pb-2">
         <div className="flex items-center gap-2 mb-2">
           <div className="flex items-center gap-1">
             <Star className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
-            <span className="text-xs sm:text-sm font-medium">{course.rating}</span>
+            <span className="text-xs sm:text-sm font-medium">
+              {course.rating}
+            </span>
           </div>
           <span className="text-xs sm:text-sm text-muted-foreground truncate">
             ({course.studentCount.toLocaleString()})
@@ -167,7 +195,9 @@ function CourseCard({ course }: { course: Course }) {
       <CardFooter className="pt-2">
         <div className="flex items-center justify-between w-full gap-2">
           <div className="flex items-center gap-1 sm:gap-2">
-            <span className="text-lg sm:text-2xl font-bold">${course.price}</span>
+            <span className="text-lg sm:text-2xl font-bold">
+              ${course.price}
+            </span>
             {course.originalPrice && (
               <span className="text-xs sm:text-sm text-muted-foreground line-through">
                 ${course.originalPrice}
@@ -196,17 +226,28 @@ export default function Index() {
             <div className="flex items-center gap-4 lg:gap-8">
               <Link to="/" className="flex items-center gap-2">
                 <BookOpen className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
-                <span className="text-lg sm:text-2xl font-bold text-primary">CursoHub</span>
+                <span className="text-lg sm:text-2xl font-bold text-primary">
+                  CursoHub
+                </span>
               </Link>
 
               <nav className="hidden lg:flex items-center gap-6">
-                <Link to="/categories" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link
+                  to="/categories"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Categorías
                 </Link>
-                <Link to="/instructors" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link
+                  to="/instructors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Instructores
                 </Link>
-                <Link to="/business" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link
+                  to="/business"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Para Empresas
                 </Link>
               </nav>
@@ -224,7 +265,11 @@ export default function Index() {
               </div>
 
               <Link to="/login">
-                <Button variant="outline" size="sm" className="hidden sm:inline-flex">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="hidden sm:inline-flex"
+                >
                   Iniciar Sesión
                 </Button>
               </Link>
@@ -272,7 +317,11 @@ export default function Index() {
               />
             </div>
             <Link to="/categories">
-              <Button size="lg" variant="secondary" className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold w-full sm:w-auto"
+              >
                 <span className="sm:hidden">Buscar</span>
                 <span className="hidden sm:inline">Buscar Cursos</span>
               </Button>
@@ -282,18 +331,30 @@ export default function Index() {
           <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <BookOpen className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-white/80" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">+10,000 Cursos</h3>
-              <p className="text-sm sm:text-base text-white/80">En más de 100 categorías diferentes</p>
+              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">
+                +10,000 Cursos
+              </h3>
+              <p className="text-sm sm:text-base text-white/80">
+                En más de 100 categorías diferentes
+              </p>
             </div>
             <div className="text-center">
               <Users className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-white/80" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">+500,000 Estudiantes</h3>
-              <p className="text-sm sm:text-base text-white/80">Aprenden con nosotros cada día</p>
+              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">
+                +500,000 Estudiantes
+              </h3>
+              <p className="text-sm sm:text-base text-white/80">
+                Aprenden con nosotros cada día
+              </p>
             </div>
             <div className="text-center">
               <Star className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-white/80" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Certificaciones</h3>
-              <p className="text-sm sm:text-base text-white/80">Reconocidas por la industria</p>
+              <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">
+                Certificaciones
+              </h3>
+              <p className="text-sm sm:text-base text-white/80">
+                Reconocidas por la industria
+              </p>
             </div>
           </div>
         </div>
@@ -302,7 +363,9 @@ export default function Index() {
       {/* Categories */}
       <section className="py-12 sm:py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Explora por Categorías</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">
+            Explora por Categorías
+          </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
             {categories.map((category, index) => {
@@ -313,10 +376,14 @@ export default function Index() {
                   to={`/category/${category.name.toLowerCase()}`}
                   className="flex flex-col items-center p-4 sm:p-6 rounded-lg bg-white hover:shadow-md transition-shadow group"
                 >
-                  <div className={`p-3 sm:p-4 rounded-full ${category.color} group-hover:scale-110 transition-transform`}>
+                  <div
+                    className={`p-3 sm:p-4 rounded-full ${category.color} group-hover:scale-110 transition-transform`}
+                  >
                     <Icon className="h-6 w-6 sm:h-8 sm:w-8" />
                   </div>
-                  <h3 className="mt-3 sm:mt-4 font-medium text-center text-sm sm:text-base">{category.name}</h3>
+                  <h3 className="mt-3 sm:mt-4 font-medium text-center text-sm sm:text-base">
+                    {category.name}
+                  </h3>
                 </Link>
               );
             })}
@@ -328,8 +395,14 @@ export default function Index() {
       <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold">Cursos Destacados</h2>
-            <Button variant="outline" size="sm" className="self-start sm:self-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold">
+              Cursos Destacados
+            </h2>
+            <Button
+              variant="outline"
+              size="sm"
+              className="self-start sm:self-auto"
+            >
               Ver Todos
             </Button>
           </div>
@@ -345,19 +418,28 @@ export default function Index() {
       {/* CTA Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-muted">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">¿Listo para comenzar?</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
+            ¿Listo para comenzar?
+          </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
             Únete a miles de estudiantes que ya están transformando sus carreras
             con nuestros cursos de alta calidad.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
             <Link to="/register">
-              <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto">
+              <Button
+                size="lg"
+                className="text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto"
+              >
                 Comenzar Ahora
               </Button>
             </Link>
             <Link to="/categories">
-              <Button size="lg" variant="outline" className="text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto"
+              >
                 Explorar Cursos
               </Button>
             </Link>
@@ -381,32 +463,122 @@ export default function Index() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Cursos</h3>
+              <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
+                Cursos
+              </h3>
               <ul className="space-y-1 sm:space-y-2 text-background/80 text-sm sm:text-base">
-                <li><Link to="/category/desarrollo" className="hover:text-background transition-colors">Desarrollo Web</Link></li>
-                <li><Link to="/category/diseno" className="hover:text-background transition-colors">Diseño</Link></li>
-                <li><Link to="/category/marketing" className="hover:text-background transition-colors">Marketing</Link></li>
-                <li><Link to="/category/negocios" className="hover:text-background transition-colors">Negocios</Link></li>
+                <li>
+                  <Link
+                    to="/category/desarrollo"
+                    className="hover:text-background transition-colors"
+                  >
+                    Desarrollo Web
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/category/diseno"
+                    className="hover:text-background transition-colors"
+                  >
+                    Diseño
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/category/marketing"
+                    className="hover:text-background transition-colors"
+                  >
+                    Marketing
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/category/negocios"
+                    className="hover:text-background transition-colors"
+                  >
+                    Negocios
+                  </Link>
+                </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Empresa</h3>
+              <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
+                Empresa
+              </h3>
               <ul className="space-y-1 sm:space-y-2 text-background/80 text-sm sm:text-base">
-                <li><Link to="/about" className="hover:text-background transition-colors">Acerca de</Link></li>
-                <li><Link to="/careers" className="hover:text-background transition-colors">Carreras</Link></li>
-                <li><Link to="/press" className="hover:text-background transition-colors">Prensa</Link></li>
-                <li><Link to="/blog" className="hover:text-background transition-colors">Blog</Link></li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="hover:text-background transition-colors"
+                  >
+                    Acerca de
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/careers"
+                    className="hover:text-background transition-colors"
+                  >
+                    Carreras
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/press"
+                    className="hover:text-background transition-colors"
+                  >
+                    Prensa
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/blog"
+                    className="hover:text-background transition-colors"
+                  >
+                    Blog
+                  </Link>
+                </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Soporte</h3>
+              <h3 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
+                Soporte
+              </h3>
               <ul className="space-y-1 sm:space-y-2 text-background/80 text-sm sm:text-base">
-                <li><Link to="/help" className="hover:text-background transition-colors">Centro de Ayuda</Link></li>
-                <li><Link to="/contact" className="hover:text-background transition-colors">Contacto</Link></li>
-                <li><Link to="/privacy" className="hover:text-background transition-colors">Privacidad</Link></li>
-                <li><Link to="/terms" className="hover:text-background transition-colors">Términos</Link></li>
+                <li>
+                  <Link
+                    to="/help"
+                    className="hover:text-background transition-colors"
+                  >
+                    Centro de Ayuda
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/contact"
+                    className="hover:text-background transition-colors"
+                  >
+                    Contacto
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/privacy"
+                    className="hover:text-background transition-colors"
+                  >
+                    Privacidad
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/terms"
+                    className="hover:text-background transition-colors"
+                  >
+                    Términos
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
